@@ -35,5 +35,12 @@ stages:
   - job: Nada
     steps:
     - checkout: none
-    - script: echo Esta etapa no hace nada
-      displayName: Paso vacio
+   - powershell: |
+        $ahora = Get-Date
+        Write-Host "Hora del agente: $($ahora.ToString('HH:mm'))"
+        if ($ahora.Hour -lt 14) {
+          Write-Host "Son menos de las 14:00. El proceso no puede terminar."
+          exit 1
+        }
+        Write-Host "Ya pasaron las 14:00. La etapa puede terminar."
+      displayName: Bloquear antes de las 14:00

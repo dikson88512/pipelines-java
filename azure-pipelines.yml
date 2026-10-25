@@ -40,6 +40,10 @@ stages:
         Write-Host "Hora del agente: $($ahora.ToString('HH:mm'))"
         if ($ahora.Hour -lt 14) {
           Write-Host "Son menos de las 14:00. El proceso no puede terminar."
+          exit 1
+        }
+        Write-Host "Ya pasaron las 14:00. La etapa puede terminar."
+      displayName: Bloquear antes de las 14:00
 
 - stage: Desplegar
   displayName: OpenShift
@@ -53,9 +57,5 @@ stages:
     - script: |
         oc login --token=$(OPENSHIFT_TOKEN) --server=$(OPENSHIFT_SERVER)
         oc project dikson88512-dev
-        oc start-build dikson88512-dev --follow
+        oc start-build helloworld --follow
       displayName: Construir y desplegar
-          exit 1
-        }
-        Write-Host "Ya pasaron las 14:00. La etapa puede terminar."
-      displayName: Bloquear antes de las 14:00

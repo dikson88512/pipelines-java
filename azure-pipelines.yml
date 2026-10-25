@@ -55,7 +55,7 @@ stages:
     steps:
     - checkout: self
     - script: |
-      "C:\tools\oc\oc.exe" login --token=$(OPENSHIFT_TOKEN) --server=$(OPENSHIFT_SERVER)
-      "C:\tools\oc\oc.exe" project dikson88512-dev
-      "C:\tools\oc\oc.exe" start-build helloworld --follow
+            "C:\tools\oc\oc.exe" login --token=$(OPENSHIFT_TOKEN) --server=$(OPENSHIFT_SERVER)
+            "C:\tools\oc\oc.exe" project dikson88512-dev
+            "C:\tools\oc\oc.exe" start-build helloworld --follow
     displayName: Construir y desplegar

@@ -35,7 +35,7 @@ stages:
   - job: Nada
     steps:
     - checkout: none
-   - powershell: |
+    - powershell: |
         $ahora = Get-Date
         Write-Host "Hora del agente: $($ahora.ToString('HH:mm'))"
         if ($ahora.Hour -lt 14) {

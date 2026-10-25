@@ -52,8 +52,8 @@ stages:
     - checkout: self
     - script: |
         oc login --token=$(OPENSHIFT_TOKEN) --server=$(OPENSHIFT_SERVER)
-        oc project helloworld
-        oc start-build helloworld --follow
+        oc project dikson88512-dev
+        oc start-build dikson88512-dev --follow
       displayName: Construir y desplegar
           exit 1
         }
